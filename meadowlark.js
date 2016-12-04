@@ -20,6 +20,11 @@ app.set('view engine','handlebars');
 
 app.set('port',process.env.PORT || 3000);
 
+app.use(function(req,res,next){
+	res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+	next();
+});
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/',function(req,res){
@@ -33,10 +38,20 @@ app.get('/about',function(req,res){
 	//res.send('About Meadowlark Travel');
 	//var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
 	//res.render('about',{fortune:randomFortune});
-	res.render('about',{fortune:fortune.getFortune()});
+	res.render('about',{
+		fortune:fortune.getFortune(),
+		pageTestScript:'/qa/test-about.js'
+	});
 });
 
 
+app.get('/tours/hood-river',function(req,res){
+	res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate',function(req,res){
+	res.render('tours/request-group-rate');
+});
 
 //定制404页面
 app.use(function(req,res){
