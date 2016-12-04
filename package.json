@@ -76,5 +76,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlz1987/web-development-with-node-and-express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mlz1987/web-development-with-node-and-express/issues"
+  }
 }
